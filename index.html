@@ -649,7 +649,7 @@ footer{padding:40px 20px 70px; text-align:center; border-top:1px solid var(--pan
       var el=rack.querySelector('.cd[data-idx="'+idx+'"]'); if(el)el.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
     }
     audio.volume=0; var pr=audio.play();
-    if(pr&&pr.catch)pr.catch(function(){status.textContent='playback blocked, click again';});
+    if(pr&&pr.catch)pr.catch(function(){status.textContent='▸ click anywhere to play';});
     var v=0,f=setInterval(function(){v=Math.min(.75,v+.06);audio.volume=v;if(v>=.75)clearInterval(f);},50);
   }
   audio.addEventListener('play',function(){disc.classList.add('playing');playBtn.innerHTML=ICON_PAUSE;status.innerHTML='▶ now playing · nujabes radio · 30s preview';});
@@ -659,6 +659,19 @@ footer{padding:40px 20px 70px; text-align:center; border-top:1px solid var(--pan
   document.getElementById('nextBtn').addEventListener('click',function(){play(((cur<0?0:cur)+1)%TRACKS.length);});
   document.getElementById('prevBtn').addEventListener('click',function(){play(((cur<0?0:cur)-1+TRACKS.length)%TRACKS.length);});
   disc.addEventListener('click',function(){ if(cur<0)play(0); else if(audio.paused)play(cur); else audio.pause(); });
+
+  /* auto-start with "aruarian dance": preload it, try on load, and start on the first real click/tap/key */
+  var startIdx=0;
+  for(var si=0; si<TRACKS.length; si++){ if(/aruarian/i.test(TRACKS[si].t)){ startIdx=si; break; } }
+  function autoKick(){ if(audio.paused){ play(startIdx); } }
+  setTimeout(autoKick, 400); // browsers block autoplay, but this preloads the track on the disc
+  var gEvents=['pointerdown','keydown','touchstart']; // clicks/taps/keys grant audio permission; scroll does not
+  function firstGesture(e){
+    if(e && e.target && e.target.closest && e.target.closest('.player')) return; // let the player's own controls drive it
+    autoKick();
+  }
+  gEvents.forEach(function(ev){ window.addEventListener(ev, firstGesture, {capture:true, passive:true}); });
+  audio.addEventListener('play', function(){ gEvents.forEach(function(ev){ window.removeEventListener(ev, firstGesture, true); }); });
 })();
 
 /* ===== SVG PROJECT LOGOS ===== */
