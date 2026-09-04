@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>◈ BARIŞ ÇELIK ◈ · sys.online</title>
+<meta name="description" content="N. Barış Çelik · Software Engineer & Machine Learning Researcher. Istanbul, Turkey." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Chakra+Petch:wght@400;600;700&family=Nabla&family=Orbitron:wght@500;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ◈ BARIŞ ÇELIK ◈  Y2K / PS2 / 2000s-Japan personal site
+   ============================================================ */
+:root{
+  --chrome:#DBE2E9; --steel:#9FB4C7; --ice:#A6E1FA; --frost:#7DF9FF; --lav:#E6E6FA; --ghost:#F8F8FF;
+  --pink:#FF9FF3; --bubble:#F368E0; --rose:#FF6FD8; --skypop:#48DBFB; --grape:#C56CF0;
+  --aqua:#00B2FF; --deepaqua:#0079BF; --lime:#C7EA46; --grass:#6BCB3C;
+  --ink:#05070f; --ink2:#0a1024;
+  --panelbg:rgba(13,20,44,.85);
+  --panelborder:rgba(166,225,250,.35);
+  --maxw:1180px;
+  --disp:"Anton",sans-serif;
+  --tech:"Orbitron",sans-serif;
+  --body:"Chakra Petch",sans-serif;
+  --term:"VT323",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:#eaf2ff; font-family:var(--body); font-size:17px; line-height:1.6;
+  background:
+    radial-gradient(ellipse 120% 90% at 50% -10%, #1a2c66 0%, #0b1330 45%, #05070f 78%),
+    #05070f;
+  overflow-x:hidden; cursor:crosshair;
+}
+a{color:var(--frost);text-decoration:none}
+img{max-width:100%}
+
+body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:9998;
+  background:repeating-linear-gradient(rgba(0,0,0,.13) 0 1px, transparent 1px 3px);}
+body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:9997;
+  background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);}
+
+/* ================= PS2 BOOT ================= */
+#boot{position:fixed; inset:0; z-index:10000; background:
+    radial-gradient(ellipse at 50% 46%, #12224e 0%, #060b1c 60%, #010208 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px;
+  transition:opacity .8s ease, visibility .8s;}
+#boot.done{opacity:0; visibility:hidden}
+.boot-towers{position:absolute; inset:0; overflow:hidden; pointer-events:none}
+.boot-towers i{position:absolute; bottom:-10%; width:2px; height:60%;
+  background:linear-gradient(to top, rgba(125,249,255,0), rgba(125,249,255,.55)); filter:blur(1px); animation:rise 3s ease-in-out infinite;}
+@keyframes rise{0%,100%{transform:translateY(30%);opacity:.15}50%{transform:translateY(-8%);opacity:.7}}
+.boot-word{font-family:var(--tech); font-weight:900; font-size:clamp(1.6rem,6vw,3.2rem);
+  letter-spacing:.35em; color:#cfe6ff; text-shadow:0 0 18px rgba(125,249,255,.7); padding-left:.35em;}
+.boot-sub{font-family:var(--term); font-size:1.5rem; color:#7df9ff; letter-spacing:.15em}
+.boot-bar{width:min(340px,70vw); height:14px; border:2px solid #5fd0ff; border-radius:2px;
+  background:rgba(0,20,40,.5); padding:2px; box-shadow:0 0 14px rgba(95,208,255,.4)}
+.boot-bar b{display:block; height:100%; width:0; background:linear-gradient(90deg,#7df9ff,#ff9ff3); box-shadow:0 0 10px #7df9ff}
+.boot-kao{font-family:var(--term); font-size:1.4rem; color:#ff9ff3; letter-spacing:.1em}
+
+/* ================= TICKER ================= */
+.ticker{position:sticky; top:0; z-index:60; overflow:hidden; white-space:nowrap;
+  background:linear-gradient(90deg,#f368e0,#00b2ff,#c7ea46,#ff9ff3);
+  border-bottom:2px solid rgba(255,255,255,.5);
+  font-family:var(--tech); font-weight:700; font-size:.82rem; letter-spacing:.18em; color:#0a1024;}
+.ticker div{display:inline-block; padding:7px 0; animation:scrollx 26s linear infinite}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker span{padding:0 1.6em}
+
+/* ================= NAV ================= */
+nav{position:sticky; top:0; z-index:55; display:flex; align-items:center; justify-content:space-between;
+  padding:14px clamp(16px,4vw,44px); transition:.3s; border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(6,10,26,.94);
+  border-bottom:1px solid var(--panelborder); padding-top:9px; padding-bottom:9px;}
+.brand{font-family:var(--tech); font-weight:900; letter-spacing:.14em; font-size:1.05rem; color:#fff; text-shadow:0 0 10px rgba(125,249,255,.55)}
+.brand b{color:var(--pink)}
+.navlinks{display:flex; gap:clamp(12px,2.4vw,30px); font-family:var(--tech); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase}
+.navlinks a{color:#cfe0f5; position:relative; padding:4px 0}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px; background:linear-gradient(90deg,var(--pink),var(--frost));transition:.3s}
+.navlinks a:hover::after,.navlinks a.active::after{width:100%}
+.navlinks a:hover{color:#fff}
+@media(max-width:640px){.navlinks{gap:12px;font-size:.6rem}.brand{font-size:.85rem}}
+
+/* ================= LAYOUT ================= */
+section{padding:clamp(3rem,6.5vw,5rem) clamp(18px,5vw,40px); position:relative}
+#stats{padding-top:0; padding-bottom:clamp(1.4rem,3vw,2rem)}
+#work{padding-top:clamp(1.4rem,3vw,2rem)}
+.wrap{max-width:var(--maxw); margin:0 auto}
+.eyebrow{font-family:var(--tech); text-transform:uppercase; letter-spacing:.32em; font-size:.72rem;
+  color:var(--pink); margin:0 0 14px; display:flex; align-items:center; gap:10px}
+.eyebrow::before{content:"✦"; color:var(--frost)}
+.h2{font-family:var(--disp); font-size:clamp(2.2rem,7vw,4.6rem); line-height:.98; letter-spacing:.01em; margin:0 0 6px; text-transform:uppercase}
+
+.chrome{background:linear-gradient(180deg,#ffffff 0%,#dce6f0 40%,#8fa2b3 50%,#f4f9ff 60%,#b3c4d4 80%,#6d8296 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1px rgba(90,120,150,.6); filter:drop-shadow(0 3px 5px rgba(0,0,0,.5));}
+.holotext{background:linear-gradient(115deg,#ff9ff3,#a6e1fa,#c7ea46,#f368e0,#7df9ff,#c3b1e1);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.aqua{position:relative; display:inline-flex; align-items:center; gap:.6em; cursor:pointer;
+  padding:.95em 1.7em; border-radius:9px; color:#eaf6ff; font-family:var(--tech);
+  font-weight:700; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; border:none;
+  background:linear-gradient(180deg,#1b2954 0%,#101a3c 55%,#0b1330 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -8px 14px rgba(0,0,0,.45), 0 10px 24px rgba(0,0,0,.5);
+  transition:transform .15s ease, box-shadow .3s ease}
+/* animated holo gradient border via mask */
+.aqua::before{content:""; position:absolute; inset:0; border-radius:9px; padding:1.4px; pointer-events:none;
+  background:linear-gradient(120deg,#7df9ff,#a6e1fa,#c7ea46,#7df9ff); background-size:200% 200%; opacity:.55;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude;
+  transition:opacity .3s}
+@keyframes holoedge{0%{background-position:0 0}100%{background-position:200% 0}}
+/* soft top sheen */
+.aqua::after{content:""; position:absolute; left:6px; right:6px; top:2px; height:42%; border-radius:9px 9px 40px 40px;
+  background:linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,0)); pointer-events:none}
+.aqua:hover{transform:translateY(-2px); box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 14px 30px rgba(125,249,255,.28)}
+.aqua:hover::before{opacity:1; animation:holoedge 5s linear infinite}
+.aqua.pink::before{background:linear-gradient(120deg,#ff9ff3,#f368e0,#c56cf0,#ff9ff3); background-size:200% 200%}
+.aqua.pink:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 14px 30px rgba(243,104,224,.3)}
+.aqua.lime::before{background:linear-gradient(120deg,#c7ea46,#7df9ff,#c7ea46); background-size:200% 200%}
+.aqua.lime:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 14px 30px rgba(199,234,70,.28)}
+
+/* ================= HERO ================= */
+#hero{min-height:100svh; display:flex; align-items:center; padding-top:2rem; padding-bottom:4rem}
+.hero-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:40px; align-items:center; width:100%}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr; gap:30px}}
+.hero-name{font-family:var(--disp); font-size:clamp(3.4rem,15vw,9rem); line-height:.86; letter-spacing:.005em; margin:.1em 0 .15em; text-transform:uppercase}
+.hero-name .l2{display:block}
+.hero-role{font-family:var(--tech); font-weight:700; font-size:clamp(1rem,3vw,1.5rem); letter-spacing:.06em; min-height:1.6em}
+.roleword{color:#fff}
+.hero-loc{font-family:var(--term); font-size:1.5rem; color:var(--frost); letter-spacing:.06em; margin-top:.4rem}
+.hero-blurb{max-width:52ch; color:#c3d3ea; margin:1.4rem 0 1.9rem}
+.hero-cta{display:flex; gap:14px; flex-wrap:wrap}
+.online{display:inline-flex;align-items:center;gap:8px;font-family:var(--tech);font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;color:#9fffb0;margin-bottom:14px}
+.dot{width:9px;height:9px;border-radius:50%;background:#39ff88;box-shadow:0 0 10px #39ff88;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ================= MUSIC PLAYER ================= */
+.player{display:flex; flex-direction:column; align-items:center; gap:18px}
+.turntable{position:relative; width:min(420px,88vw); aspect-ratio:1; margin:0 auto}
+.disc-card{position:relative; width:100%; height:100%; border-radius:24px; padding:2px;
+  background:linear-gradient(135deg,#ff9ff3,#a6e1fa,#c7ea46,#f368e0);
+  box-shadow:0 20px 60px rgba(0,40,90,.6); animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
+.disc-inner{height:100%; width:100%; border-radius:22px; background:radial-gradient(circle at 50% 45%, #16264f, #070c1e 70%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; overflow:hidden; border:1px solid rgba(166,225,250,.3)}
+.disc-ring{position:relative; width:66%; aspect-ratio:1; border-radius:50%; overflow:hidden;
+  background:conic-gradient(from 0deg,#ff9ff3,#7df9ff,#c7ea46,#f368e0,#a6e1fa,#ff9ff3);
+  box-shadow:0 0 40px rgba(125,249,255,.4), inset 0 0 30px rgba(0,0,0,.5)}
+.disc-ring::after{content:"";position:absolute;inset:44%;border-radius:50%;background:#070c1e;border:1px solid rgba(166,225,250,.4);z-index:2}
+.disc-art{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%; opacity:0; transition:opacity .45s; z-index:1}
+.disc-ring.has .disc-art{opacity:1}
+#disc.playing .disc-ring{animation:spin 5s linear infinite}
+@media(prefers-reduced-motion:reduce){.disc-card,.disc-ring{animation:none!important}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.disc-tag{font-family:var(--term); font-size:1.35rem; color:#ff9ff3; letter-spacing:.12em; text-align:center; max-width:76%;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.disc-tag2{font-family:var(--tech); font-size:.62rem; letter-spacing:.28em; color:#9fb4c7; text-transform:uppercase; text-align:center; max-width:80%;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.player-ctrls{display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:center}
+.pbtn{position:relative; cursor:pointer; width:48px; height:48px; border-radius:50%; display:grid; place-items:center;
+  color:#dbe8f5; border:1px solid rgba(166,225,250,.4);
+  background:linear-gradient(180deg,#1b2954,#0b1330);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -6px 10px rgba(0,0,0,.4), 0 6px 14px rgba(0,0,0,.5);
+  transition:transform .15s, box-shadow .3s, border-color .3s}
+.pbtn svg{width:16px; height:16px; fill:currentColor; display:block}
+.pbtn:hover{transform:translateY(-2px); border-color:#7df9ff; color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 0 18px rgba(125,249,255,.4)}
+.pbtn.big{width:66px; height:66px; border:1px solid rgba(255,255,255,.55); color:#04223f;
+  background:radial-gradient(circle at 40% 30%, #d4f3ff, #4fb6ff 52%, #0a63b0 100%);
+  box-shadow:inset 0 2px 2px rgba(255,255,255,.7), inset 0 -8px 12px rgba(0,40,80,.5), 0 8px 20px rgba(0,80,160,.5)}
+.pbtn.big svg{width:24px; height:24px}
+.pbtn.big:hover{transform:translateY(-2px); box-shadow:inset 0 2px 2px rgba(255,255,255,.85), 0 0 26px rgba(125,249,255,.6)}
+.pmini{font-family:var(--tech); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:#9fb4c7}
+.pmini a{color:var(--frost)}
+
+/* COVERS: visible strip at the bottom, tap to play */
+.rack-head{font-family:var(--tech); font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:#8ea6c8; margin-top:2px}
+.rack-head b{color:var(--frost)}
+.cd-rack{display:flex; gap:12px; align-items:flex-start; overflow-x:auto; overflow-y:hidden;
+  max-width:min(440px,94vw); padding:8px 4px 14px; scrollbar-width:thin}
+.cd-rack::-webkit-scrollbar{height:6px}
+.cd-rack::-webkit-scrollbar-thumb{background:rgba(166,225,250,.4); border-radius:3px}
+.cd{position:relative; flex:0 0 auto; width:68px; cursor:pointer; text-align:center; transition:transform .2s}
+.cd img{width:68px; height:68px; object-fit:cover; border-radius:9px; display:block;
+  border:1px solid rgba(166,225,250,.3); box-shadow:0 4px 12px rgba(0,0,0,.5); transition:.2s}
+.cd .lbl{display:block; margin-top:6px; font-family:var(--tech); font-size:.5rem; letter-spacing:.05em;
+  color:#9fb4c7; text-transform:uppercase; max-width:68px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.cd:hover{transform:translateY(-4px)}
+.cd:hover img{border-color:var(--pink); box-shadow:0 8px 20px rgba(243,104,224,.45)}
+.cd:hover .lbl{color:#eaf2ff}
+.cd.active img{outline:2px solid var(--frost); outline-offset:1px; box-shadow:0 0 16px rgba(125,249,255,.6)}
+.cd.active::after{content:"\25B6"; position:absolute; top:5px; right:5px; font-size:.55rem; color:#fff; text-shadow:0 0 6px var(--frost)}
+
+/* ================= STATS ================= */
+.stats{display:grid; grid-template-columns:repeat(5,1fr); gap:18px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{border:1px solid var(--panelborder); border-radius:14px; padding:22px 16px; text-align:center;
+  background:var(--panelbg); box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.stat b{display:block; font-family:var(--disp); font-size:clamp(2rem,5vw,3.2rem); line-height:1; letter-spacing:.02em}
+.stat small{display:block; margin-top:8px; font-family:var(--tech); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:#9fb4c7}
+
+/* ================= PROJECT CARDS ================= */
+.proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px}
+@media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+.card{position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--panelborder);
+  background:var(--panelbg); transition:.35s; display:block; color:inherit}
+.card:hover{transform:translateY(-6px); border-color:var(--pink); box-shadow:0 24px 60px rgba(243,104,224,.22)}
+.card-media{aspect-ratio:16/10; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(circle at 30% 20%, #1c2f60, #0a1230 70%)}
+.card-media .glyph{font-size:clamp(3rem,9vw,5.5rem); transition:transform .5s ease; filter:drop-shadow(0 6px 16px rgba(0,0,0,.5))}
+.card:hover .card-media .glyph{transform:scale(1.12) rotate(-4deg)}
+.card-media .glyph svg{width:min(180px,52%); height:auto; display:block; filter:drop-shadow(0 8px 20px rgba(0,0,0,.55))}
+.card-media::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(rgba(255,255,255,.05) 0 1px,transparent 1px 4px);pointer-events:none}
+.badge{position:absolute; top:12px; left:12px; z-index:3; font-family:var(--tech); font-weight:700;
+  font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; padding:5px 10px; border-radius:999px;
+  color:#08210a; background:linear-gradient(#eaffb0,#c7ea46); box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.badge.pink{background:linear-gradient(#ffd0f6,#ff6fd8);color:#3a0030}
+.badge.aqua{background:linear-gradient(#bfefff,#48dbfb);color:#02283a}
+.card-body{padding:20px 22px 24px}
+.card-meta{font-family:var(--tech); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--pink); margin-bottom:8px}
+.card h3{font-family:var(--disp); font-size:1.7rem; letter-spacing:.02em; margin:0 0 10px; text-transform:uppercase}
+.card p{color:#c3d3ea; font-size:.95rem; margin:0 0 14px}
+.stack{display:flex; flex-wrap:wrap; gap:7px}
+.chip{font-family:var(--term); font-size:1rem; line-height:1; padding:5px 10px; border-radius:6px; color:#cfe6ff; border:1px solid rgba(166,225,250,.3); background:rgba(0,20,45,.4)}
+
+/* ================= EXPERIENCE ================= */
+.xp{display:grid; gap:18px}
+.xp-row{display:grid; grid-template-columns:58px 140px 1fr; gap:22px; padding:22px; align-items:start;
+  border:1px solid var(--panelborder); border-radius:14px; background:var(--panelbg); transition:.3s}
+.xp-row:hover{border-color:rgba(255,159,243,.5); box-shadow:0 12px 30px rgba(243,104,224,.12)}
+.xp-ico{width:58px}.xp-ico svg{width:100%;height:auto;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+@media(max-width:640px){.xp-row{grid-template-columns:46px 1fr; gap:10px 14px}.xp-row .xp-when{grid-column:2}}
+
+/* PS2 MEMORY CARD skill loader */
+.mcard-zone{display:flex; gap:26px; align-items:stretch; flex-wrap:wrap; margin-top:22px;
+  border:1px solid var(--panelborder); border-radius:16px; padding:24px; background:var(--panelbg)}
+.mcard-side{display:flex; flex-direction:column; align-items:center; gap:10px}
+.mcard{width:118px; cursor:pointer; transition:transform .2s; filter:drop-shadow(0 8px 18px rgba(0,0,0,.55))}
+.mcard:hover{transform:translateY(-4px) rotate(-2deg)}
+.mcard svg{width:100%; height:auto; display:block}
+.mcard-cap{font-family:var(--tech); font-size:.55rem; letter-spacing:.16em; text-transform:uppercase; color:var(--pink); animation:blink 1.4s steps(1) infinite}
+.mcard-screen{flex:1 1 260px; min-width:240px; border-radius:12px; overflow:hidden; position:relative;
+  background:linear-gradient(180deg,#04120c,#020a06); border:1px solid #1c3a2a; box-shadow:inset 0 0 30px rgba(0,255,140,.08)}
+.mcard-screen::after{content:""; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(rgba(0,0,0,.25) 0 1px, transparent 1px 3px)}
+.mcs-head{font-family:var(--term); font-size:1.1rem; letter-spacing:.06em; color:#3affa0; padding:10px 14px; border-bottom:1px solid #133; opacity:.85}
+.mcs-body{padding:18px 18px 22px; min-height:132px; display:flex; flex-direction:column; justify-content:center; gap:6px}
+.mcs-idle{font-family:var(--term); font-size:1.35rem; color:#2f8f66}
+.mcs-cat{font-family:var(--tech); font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:#39ffa0}
+.mcs-name{font-family:var(--disp); font-size:2rem; color:#eafff2; text-transform:uppercase; line-height:1}
+.mcs-blurb{font-family:var(--term); font-size:1.25rem; color:#9fe8c4; line-height:1.2}
+.mcs-bar{height:9px; background:#062015; border:1px solid #1c5c3c; border-radius:2px; margin-top:10px; overflow:hidden}
+.mcs-bar b{display:block; height:100%; width:0; background:linear-gradient(90deg,#39ffa0,#7df9ff); transition:width .8s ease}
+.mcs-flick{animation:flick .38s steps(2) 2}
+@keyframes flick{50%{opacity:.35}}
+@media(max-width:560px){.mcard{width:92px}}
+.xp-when{font-family:var(--term); font-size:1.3rem; color:var(--frost); letter-spacing:.05em}
+.xp h3{font-family:var(--tech); font-weight:700; font-size:1.15rem; margin:0 0 4px; letter-spacing:.03em}
+.xp .org{color:var(--pink); font-size:.85rem; margin-bottom:10px; font-family:var(--tech); letter-spacing:.08em}
+.xp p{margin:0; color:#c3d3ea; font-size:.95rem}
+
+/* ================= SKILLS ================= */
+.skillstrip{overflow:hidden; white-space:nowrap; border-top:1px solid var(--panelborder); border-bottom:1px solid var(--panelborder); padding:16px 0; background:rgba(6,10,26,.4)}
+.skillstrip div{display:inline-block; animation:scrollx 30s linear infinite}
+.skillstrip span{font-family:var(--disp); font-size:1.9rem; letter-spacing:.05em; padding:0 .6em; text-transform:uppercase; color:transparent; -webkit-text-stroke:1px rgba(166,225,250,.55)}
+.skillstrip span:nth-child(3n){-webkit-text-stroke:1px var(--pink)}
+.skillstrip span:nth-child(3n+1){-webkit-text-stroke:1px var(--frost)}
+
+/* ================= CONTACT ================= */
+#contact{text-align:center}
+.gbook{max-width:640px; margin:26px auto 0; border:2px ridge var(--panelborder); border-radius:16px; padding:30px 26px; background:var(--panelbg)}
+.gbook .kao{font-family:var(--term); font-size:1.7rem; color:var(--pink); margin-bottom:6px}
+.links{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:20px}
+
+/* ================= FOOTER ================= */
+footer{padding:40px 20px 70px; text-align:center; border-top:1px solid var(--panelborder); background:rgba(4,7,18,.6)}
+.blinkies{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:0 auto 22px; max-width:640px}
+.blinkie{font-family:var(--term); font-size:.95rem; letter-spacing:.05em; padding:4px 10px; border-radius:3px; border:1px solid rgba(255,255,255,.35); color:#fff; animation:blink 1.4s steps(1) infinite}
+.blinkie:nth-child(2n){background:linear-gradient(90deg,#f368e0,#00b2ff)}
+.blinkie:nth-child(3n){background:linear-gradient(90deg,#c7ea46,#00b2ff);color:#06210a}
+.blinkie:nth-child(3n+1){background:linear-gradient(90deg,#ff9ff3,#c56cf0)}
+.counter{display:inline-flex; gap:4px; margin:6px auto 14px}
+.counter b{font-family:var(--term); font-size:1.6rem; background:#02040c; color:#39ff88; padding:2px 8px; border:1px solid #1c6; border-radius:3px; box-shadow:inset 0 0 8px rgba(57,255,136,.4)}
+.uc{font-family:var(--tech); font-size:.7rem; letter-spacing:.2em; color:var(--lime); text-transform:uppercase; margin-top:10px; animation:blink 1.2s steps(1) infinite}
+.foot-note{font-family:var(--term); font-size:1.2rem; color:#7f93b4; margin-top:14px}
+
+.spark{position:fixed; z-index:9996; pointer-events:none; font-size:14px; color:#fff; text-shadow:0 0 6px #7df9ff; animation:twinkle .9s ease forwards}
+@keyframes twinkle{0%{opacity:0;transform:scale(.2) rotate(0)}40%{opacity:1;transform:scale(1) rotate(120deg)}100%{opacity:0;transform:scale(.3) rotate(220deg)}}
+
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1; transform:none}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001s !important; animation-iteration-count:1 !important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- BOOT -->
+<div id="boot" aria-hidden="true">
+  <div class="boot-towers" id="towers"></div>
+  <div class="boot-word">SYSTEM</div>
+  <div class="boot-sub" id="bootsub">loading b.celik.exe …</div>
+  <div class="boot-bar"><b id="bootbar"></b></div>
+  <div class="boot-kao">٩(◕‿◕)۶  memory card OK</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true"><div id="tickertrack"></div></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="brand">◈ BARIŞ<b>.</b>ÇELIK</div>
+  <div class="navlinks">
+    <a href="#hero">Home</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="online"><span class="dot"></span> status: online · shipping since 2023</div>
+      <div class="eyebrow">software engineer · ml researcher · istanbul</div>
+      <h1 class="hero-name"><span class="chrome">BARIŞ</span><span class="l2 holotext">ÇELIK</span></h1>
+      <div class="hero-role">&gt; <span class="roleword" id="roleword">Machine Learning Researcher</span><span style="color:var(--pink)">_</span></div>
+      <div class="hero-loc">📍 Istanbul, Turkey · Yıldız Teknik Üniversitesi</div>
+      <p class="hero-blurb">Computer engineer who trains neural nets that beat clinical baselines, ships full-stack platforms, and builds developer communities 200+ strong. I write optimizers from scratch for fun and full-stack apps for real.</p>
+      <div class="hero-cta">
+        <a class="aqua" href="#work">◈ View my work</a>
+        <a class="aqua pink" href="mailto:nbariscelikk@gmail.com">✉ Get in touch</a>
+        <a class="aqua lime" href="https://github.com/bariscelikk1" target="_blank" rel="noopener">⌘ GitHub</a>
+      </div>
+    </div>
+
+    <div class="player">
+      <div class="turntable">
+        <div class="disc-card" id="disc"><div class="disc-inner">
+          <div class="disc-ring" id="discRing"><img id="discArt" class="disc-art" alt="" /></div>
+          <div class="disc-tag" id="npTitle">NUJABES</div>
+          <div class="disc-tag2" id="npArtist">tap a track to play ♪</div>
+        </div></div>
+      </div>
+      <div class="player-ctrls">
+        <button class="pbtn" id="prevBtn" aria-label="previous"><svg viewBox="0 0 24 24"><path d="M7 6v12H5V6zm13 0v12l-9-6z"/></svg></button>
+        <button class="pbtn big" id="playBtn" aria-label="play/pause"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        <button class="pbtn" id="nextBtn" aria-label="next"><svg viewBox="0 0 24 24"><path d="M4 6v12l9-6zm13 0h2v12h-2z"/></svg></button>
+      </div>
+      <div class="pmini" id="pStatus" style="text-align:center">nujabes radio · 30s preview · <a href="https://open.spotify.com/playlist/37i9dQZF1E4BO0EW30VEmk" target="_blank" rel="noopener">on spotify ↗</a></div>
+      <div class="rack-head"><b id="crateCount"></b> · scroll & tap to play</div>
+      <div class="cd-rack" id="cdRack"></div>
+    </div>
+    <audio id="bgm" preload="none"></audio>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats" style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="eyebrow">the numbers don't lie</div>
+    <div class="stats">
+      <div class="stat"><b class="holotext" data-count="98" data-suffix="%">0%</b><small>Val. accuracy · DermAI</small></div>
+      <div class="stat"><b class="chrome" data-count="10015" data-suffix="+">0</b><small>Images trained on</small></div>
+      <div class="stat"><b class="holotext" data-count="200" data-suffix="+">0+</b><small>Attendees gathered</small></div>
+      <div class="stat"><b class="chrome" data-count="30" data-suffix="+">0+</b><small>Students mentored</small></div>
+      <div class="stat"><b class="holotext" data-count="3" data-suffix="+ yrs">0</b><small>Building &amp; shipping</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">select a title · press ✕</div>
+      <h2 class="h2"><span class="chrome">FLAGSHIP</span> <span class="holotext">BUILDS</span></h2>
+      <p style="max-width:56ch;color:#b9cae6">Four projects, zero filler. From deep-learning diagnostics to a full production platform.</p>
+    </div>
+
+    <div class="proj-grid" style="margin-top:40px">
+      <a class="card reveal" href="https://github.com/bariscelikk1" target="_blank" rel="noopener">
+        <div class="card-media"><span class="badge">98% ACCURACY</span><span class="glyph" data-proj="dermai">🧬</span></div>
+        <div class="card-body">
+          <div class="card-meta">2026 · Deep Learning · Medical AI</div>
+          <h3>DermAI</h3>
+          <p>A 7-class dermoscopic skin-lesion classifier on HAM10000 (10,015 images) hitting <b>98%+ validation accuracy</b>, with melanoma recall as the primary target. Two-stage LP→FT transfer pipeline, custom Keras callbacks, and a 58:1 class-imbalance solved with strategic oversampling.</p>
+          <div class="stack"><span class="chip">TensorFlow/Keras</span><span class="chip">EfficientNetB0</span><span class="chip">Transfer Learning</span><span class="chip">Kaggle</span></div>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/bariscelikk1" target="_blank" rel="noopener">
+        <div class="card-media"><span class="badge pink">FROM SCRATCH</span><span class="glyph" data-proj="optimizer">📉</span></div>
+        <div class="card-body">
+          <div class="card-meta">2026 · Optimization · Visualization</div>
+          <h3>Optimizer Lab</h3>
+          <p>Engineered <b>Gradient Descent, SGD &amp; Adam from scratch</b>, no library shortcuts, then visualized and raced their convergence trajectories on a custom semantically-vectorized dataset. Math you can watch move.</p>
+          <div class="stack"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">Google Colab</span></div>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/bariscelikk1" target="_blank" rel="noopener">
+        <div class="card-media"><span class="badge aqua">FULL-STACK · LIVE</span><span class="glyph" data-proj="kortly">🏟️</span></div>
+        <div class="card-body">
+          <div class="card-meta">2026 · Next.js · Production</div>
+          <h3>Kortly · Reservations</h3>
+          <p>A full-stack sports-complex reservation platform built with a 5-person team: real payments via Iyzico, live weather via Open-Meteo, and end-to-end system design, docs &amp; UI/UX across the whole lifecycle.</p>
+          <div class="stack"><span class="chip">Next.js 14</span><span class="chip">PostgreSQL</span><span class="chip">Prisma</span><span class="chip">Supabase</span><span class="chip">Iyzico</span></div>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/bariscelikk1" target="_blank" rel="noopener">
+        <div class="card-media"><span class="badge">OOP ENGINE</span><span class="glyph" data-proj="airline">✈️</span></div>
+        <div class="card-body">
+          <div class="card-meta">2025 · Java · Systems</div>
+          <h3>Airline Management System</h3>
+          <p>An object-oriented Java engine simulating a full airline reservation system: inheritance, polymorphism &amp; encapsulation enforced across booking, cancellation and listing flows. Clean OOP, textbook-tight.</p>
+          <div class="stack"><span class="chip">Java</span><span class="chip">OOP</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="skillstrip" aria-hidden="true"><div id="skilltrack"></div></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">./whoami</div>
+      <h2 class="h2"><span class="holotext">COMMUNITY</span> <span class="chrome">&amp; CRAFT</span></h2>
+      <p style="max-width:60ch;color:#b9cae6">Third-year Computer Engineering student at Yıldız Teknik Üniversitesi, but the CV only tells half of it. I don't just build software, I build the rooms where builders meet.</p>
+    </div>
+    <div class="xp" style="margin-top:30px">
+      <div class="xp-row reveal">
+        <div class="xp-ico"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ic1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f6fa"/><stop offset=".5" stop-color="#b9c6d2"/><stop offset="1" stop-color="#7a8a99"/></linearGradient></defs><path d="M24 3 L42 13 V35 L24 45 L6 35 V13 Z" fill="url(#ic1)" stroke="#8fa2b3" stroke-width="1.2"/><path d="M24 7 L38 15 V33 L24 41 L10 33 V15 Z" fill="#071022"/><circle cx="24" cy="27" r="3.4" fill="#7df9ff"/><path d="M18 29 a9 9 0 0 1 12 0" fill="none" stroke="#2fc6ff" stroke-width="2" stroke-linecap="round"/><path d="M14.5 31 a14 14 0 0 1 19 0" fill="none" stroke="#2fc6ff" stroke-width="1.5" stroke-linecap="round" opacity=".55"/></svg></div>
+        <div class="xp-when">2025 → now</div>
+        <div class="xp">
+          <h3>Event Coordinator &amp; Core Member</h3>
+          <div class="org">GDG YTÜ · Google Developer Groups</div>
+          <p>Spearheaded <b>GDays YTÜ</b>, a <b>200+ attendee</b> flagship tech conference, directing the full speaker lineup, end-to-end logistics and live on-site operations. Drive community programming across women-in-tech talks, hackathons and datathons that connect students directly to industry.</p>
+        </div>
+      </div>
+      <div class="xp-row reveal">
+        <div class="xp-ico"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ic2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f6fa"/><stop offset=".5" stop-color="#b9c6d2"/><stop offset="1" stop-color="#7a8a99"/></linearGradient></defs><path d="M24 3 L42 13 V35 L24 45 L6 35 V13 Z" fill="url(#ic2)" stroke="#8fa2b3" stroke-width="1.2"/><path d="M24 7 L38 15 V33 L24 41 L10 33 V15 Z" fill="#071022"/><path d="M16 17 L20 25 L14 24 Z" fill="#12233d"/><path d="M32 17 L34 24 L28 25 Z" fill="#12233d"/><ellipse cx="24" cy="28" rx="10" ry="11" fill="#12233d" stroke="#2fc6ff" stroke-width="1"/><circle cx="20" cy="26" r="4" fill="#eafcff"/><circle cx="28" cy="26" r="4" fill="#eafcff"/><circle cx="20" cy="26" r="1.9" fill="#2fc6ff"/><circle cx="28" cy="26" r="1.9" fill="#2fc6ff"/><path d="M24 30 l-2.4 3.4 h4.8 z" fill="#7df9ff"/></svg></div>
+        <div class="xp-when">2023 → now</div>
+        <div class="xp">
+          <h3>Student Coach &amp; Mentor</h3>
+          <div class="org">Baykuş Mentörlük</div>
+          <p>Coached <b>30+ university-entrance candidates</b> to exam readiness through tailored one-on-one study strategies and structured problem-solving, translating high-pressure prep into real acceptance-letter outcomes.</p>
+        </div>
+      </div>
+      <div class="xp-row reveal">
+        <div class="xp-ico"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ic3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f6fa"/><stop offset=".5" stop-color="#b9c6d2"/><stop offset="1" stop-color="#7a8a99"/></linearGradient></defs><path d="M24 3 L42 13 V35 L24 45 L6 35 V13 Z" fill="url(#ic3)" stroke="#8fa2b3" stroke-width="1.2"/><path d="M24 7 L38 15 V33 L24 41 L10 33 V15 Z" fill="#071022"/><path d="M20 20 L13 26 L20 32" fill="none" stroke="#7df9ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 20 L35 26 L28 32" fill="none" stroke="#7df9ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><line x1="26.5" y1="19" x2="21.5" y2="33" stroke="#2fc6ff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="xp-when">2023 → now</div>
+        <div class="xp">
+          <h3>Active Member</h3>
+          <div class="org">SKYLAB Computer Club · YTÜ</div>
+          <p>Two years embedded in weekly coding nights and collaborative build sessions, shipping technical initiatives alongside the university's core developer community.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mcard-zone reveal">
+      <div class="mcard-side">
+        <div class="mcard" id="mcard" role="button" tabindex="0" aria-label="load a skill">
+          <svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="mc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dbe6f2"/><stop offset=".5" stop-color="#9fb2c6"/><stop offset="1" stop-color="#6f8296"/></linearGradient></defs>
+            <rect x="10" y="6" width="80" height="120" rx="12" fill="url(#mc1)" stroke="#5f7186" stroke-width="1.5"/>
+            <rect x="18" y="16" width="64" height="46" rx="6" fill="#0b1a30" stroke="#39b6ff" stroke-width="1"/>
+            <text x="50" y="44" fill="#7df9ff" font-family="'VT323',monospace" font-size="16" text-anchor="middle">SKILL</text>
+            <g stroke="#5f7186" stroke-width="2"><line x1="24" y1="78" x2="76" y2="78"/><line x1="24" y1="86" x2="76" y2="86"/><line x1="24" y1="94" x2="76" y2="94"/></g>
+            <rect x="30" y="116" width="40" height="15" rx="2" fill="#0b1a30" stroke="#5f7186"/>
+            <g fill="#39b6ff"><rect x="34" y="119" width="3" height="9"/><rect x="40" y="119" width="3" height="9"/><rect x="46" y="119" width="3" height="9"/><rect x="52" y="119" width="3" height="9"/><rect x="58" y="119" width="3" height="9"/></g>
+          </svg>
+        </div>
+        <div class="mcard-cap">▸ click to load save</div>
+      </div>
+      <div class="mcard-screen">
+        <div class="mcs-head">MEMORY CARD (8MB) · SLOT 1</div>
+        <div class="mcs-body" id="mcsBody"><div class="mcs-idle">▸ insert memory card to view craft data…</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow" style="justify-content:center">sign my guestbook ♡</div>
+    <h2 class="h2"><span class="holotext">LET'S BUILD</span></h2>
+    <div class="gbook">
+      <div class="kao">☆*:.｡. o(≧▽≦)o .｡.:*☆</div>
+      <p style="color:#c3d3ea;margin:.4rem 0 0">Looking for a software engineering intern who ships fast, learns faster, and writes optimizers from scratch for the vibe? That's the one. Hit me up, I reply quick.</p>
+      <div class="links">
+        <a class="aqua" href="mailto:nbariscelikk@gmail.com">✉ nbariscelikk@gmail.com</a>
+        <a class="aqua pink" href="https://www.linkedin.com/in/bar%C4%B1%C5%9F-%C3%A7elik-12979a252/" target="_blank" rel="noopener">in · LinkedIn</a>
+        <a class="aqua lime" href="https://github.com/bariscelikk1" target="_blank" rel="noopener">⌘ github/bariscelikk1</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="blinkies">
+    <span class="blinkie">✧ best viewed @ 1024×768 ✧</span>
+    <span class="blinkie">♥ made with HTML ♥</span>
+    <span class="blinkie">✿ Istanbul, TR ✿</span>
+  </div>
+  <div><span class="uc">🚧 under construction · always shipping 🚧</span></div>
+  <div style="margin-top:16px">
+    <div style="font-family:var(--tech);font-size:.62rem;letter-spacing:.24em;color:#9fb4c7;text-transform:uppercase;margin-bottom:6px">You are visitor number</div>
+    <div class="counter" id="counter"></div>
+  </div>
+  <div class="foot-note">© 2026 N. Barış Çelik · thx 4 visiting !! ( ˶ˆᗜˆ˵ )</div>
+</footer>
+
+<script>
+/* ===== PS2 BOOT ===== */
+(function(){
+  var towers=document.getElementById('towers');
+  for(var i=0;i<14;i++){var t=document.createElement('i');
+    t.style.left=(4+i*7)+'%';t.style.animationDelay=(i*0.14)+'s';
+    t.style.height=(40+Math.random()*45)+'%';towers.appendChild(t);}
+  var bar=document.getElementById('bootbar'),sub=document.getElementById('bootsub');
+  var msgs=['mounting memory card…','loading b.celik.exe…','decompressing chrome…','calibrating sparkles…','welcome ٩(◕‿◕)۶'];
+  var p=0;
+  var iv=setInterval(function(){
+    p+=Math.random()*16+7; if(p>100)p=100;
+    bar.style.width=p+'%';
+    sub.textContent=msgs[Math.min(msgs.length-1,Math.floor(p/22))];
+    if(p>=100){clearInterval(iv); setTimeout(function(){var b=document.getElementById('boot');
+      b.classList.add('done'); setTimeout(function(){b.style.display='none';},900);},520);}
+  },230);
+})();
+
+/* ===== TICKER + SKILLS ===== */
+(function(){
+  var t='✦ welcome 2 my corner of the web ✦ software engineer · ml researcher ✦ open 2 internships ✦ DermAI: 98% accuracy ✦ optimizers from scratch ✦ GDG YTÜ ✦ istanbul → the world ✦ ';
+  document.getElementById('tickertrack').innerHTML='<span>'+t+'</span><span>'+t+'</span>';
+  var sk=['C','PYTHON','JAVA','NEXT.JS','TENSORFLOW','KERAS','POSTGRESQL','PRISMA','SUPABASE','NUMPY','GIT','LINUX','VERILOG','●'];
+  var html=sk.map(function(s){return '<span>'+s+'</span>';}).join('');
+  document.getElementById('skilltrack').innerHTML='<div style="display:inline-block">'+html+html+'</div>';
+})();
+
+/* ===== ROLE ROTATOR ===== */
+(function(){
+  var roles=['Machine Learning Researcher','Full-Stack Engineer','Optimizer-from-scratch Guy','Community Builder','Next.js Developer','Deep Learning Nerd'];
+  var el=document.getElementById('roleword'),i=0;
+  setInterval(function(){i=(i+1)%roles.length;el.style.opacity=0;
+    setTimeout(function(){el.textContent=roles[i];el.style.transition='opacity .3s';el.style.opacity=1;},250);},2200);
+})();
+
+/* ===== NAV + REVEAL ===== */
+(function(){
+  var nav=document.getElementById('nav');
+  var links=[].slice.call(document.querySelectorAll('.navlinks a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>60);
+    var y=window.scrollY+140,cur=0;
+    secs.forEach(function(s,idx){if(s&&s.offsetTop<=y)cur=idx;});
+    links.forEach(function(l,idx){l.classList.toggle('active',idx===cur);});
+  },{passive:true});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+
+/* ===== COUNT-UP ===== */
+(function(){
+  var seen=false;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;run();}});},{threshold:.4});
+  var s=document.getElementById('stats'); if(s) io.observe(s);
+  function run(){
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var end=+el.dataset.count,suf=el.dataset.suffix||'',t0=null,dur=1400;
+      function step(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/dur);var v=Math.floor((1-Math.pow(1-k,3))*end);
+        el.textContent=v.toLocaleString()+suf; if(k<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);
+    });
+  }
+})();
+
+/* ===== VISITOR COUNTER ===== */
+(function(){
+  var base=13370, add=Math.floor(Math.random()*40);
+  var key='bcvisits', n=+(localStorage.getItem(key)||0);
+  n=n?n+1:base+add; localStorage.setItem(key,n);
+  var str=String(n).padStart(6,'0'),wrap=document.getElementById('counter');
+  str.split('').forEach(function(d){var b=document.createElement('b');b.textContent=d;wrap.appendChild(b);});
+})();
+
+/* ===== SPARKLE CURSOR ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  if(matchMedia('(pointer:coarse)').matches)return;
+  var glyphs=['✦','✧','⋆','★','✩'],last=0;
+  window.addEventListener('mousemove',function(e){
+    var now=Date.now(); if(now-last<95)return; last=now;
+    var s=document.createElement('span');s.className='spark';
+    s.textContent=glyphs[Math.floor(Math.random()*glyphs.length)];
+    s.style.left=(e.clientX+ (Math.random()*16-8))+'px';
+    s.style.top=(e.clientY+(Math.random()*16-8))+'px';
+    s.style.color=['#fff','#ff9ff3','#7df9ff','#c7ea46'][Math.floor(Math.random()*4)];
+    document.body.appendChild(s);setTimeout(function(){s.remove();},900);
+  },{passive:true});
+})();
+
+/* ===== MAGNETIC BUTTONS ===== */
+(function(){
+  if(matchMedia('(pointer:coarse)').matches)return;
+  document.querySelectorAll('.aqua').forEach(function(b){
+    b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();
+      b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.18)+'px,'+((e.clientY-r.top-r.height/2)*.28)+'px)';});
+    b.addEventListener('mouseleave',function(){b.style.transform='';});
+  });
+})();
+
+/* ===== MUSIC PLAYER (CD rack, Spotify 30s previews) ===== */
+(function(){
+  var TRACKS = [{"t": "aruarian dance", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/8649fac23b7acd801608cbdf9c95559d88a04801", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0259ef99ed996b4e537ed2e6a3"}, {"t": "Imaginary Folklore", "a": "clammbon, Nujabes", "p": "https://p.scdn.co/mp3-preview/8f872a42ddb9fc3112d6ca874e50e712d9d4aaca", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023ca3c7fd7938c62b7b96cc3e"}, {"t": "just forget", "a": "Force Of Nature", "p": "https://p.scdn.co/mp3-preview/6523133e3e371abed135a0a20524f51e4895c388", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02878ed741b8e1342d58a332ca"}, {"t": "Who's Theme", "a": "MINMI", "p": "https://p.scdn.co/mp3-preview/93357d27d095f7365aca735e62fc188f348d7e9d", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021435df5d8a188511a5ac0b85"}, {"t": "pretending to...", "a": "TSUTCHIE", "p": "https://p.scdn.co/mp3-preview/b1a517795e0144862aa6ba62d23900d2ac14d0a2", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02eb270132080ef17f74a90d91"}, {"t": "reflection eternal", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/b052abda37333dd00e4b37c1540fac88c128fb47", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02421d647a4f604d79943f4dad"}, {"t": "ole", "a": "fat jon", "p": "https://p.scdn.co/mp3-preview/bcd1c117b7af44e107551cdfdb1fe4176b27deb1", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0259ef99ed996b4e537ed2e6a3"}, {"t": "Winter Lane (Nujabes Remix)", "a": "DSK, Nujabes", "p": "https://p.scdn.co/mp3-preview/41ffcad0972d40a2d7caeca88a57a5853962a21e", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023ca3c7fd7938c62b7b96cc3e"}, {"t": "The Old Light (Voices From 93 Million Miles Away Remix) [12inch Ver.]", "a": "Pase Rock", "p": "https://p.scdn.co/mp3-preview/1a3f649adca89373c5ccfebc34d24e047b63b185", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a511be82225080f67b389129"}, {"t": "Letters to Jun(E)", "a": "Witness", "p": "https://p.scdn.co/mp3-preview/e00aea6373bfaaa9741df2bc5d06ced7ddebdbad", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024e47aeb51f9bf9bcf8a20a93"}, {"t": "tsurugi no mai", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/4fa0310f236a19bd22ade57a15e012dfa9267db1", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02878ed741b8e1342d58a332ca"}, {"t": "Dreamland", "a": "14?, Cise Star, Fayya", "p": "https://p.scdn.co/mp3-preview/86db4a99ab6f9c60ba634579d431248c59be89d0", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025a3750a7032eda3ea17e3419"}, {"t": "D.T.F.N.", "a": "Cise Starr", "p": "https://p.scdn.co/mp3-preview/7166634e7ba1191da2d8e1d56531622bcc115c36", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023092b4bb9f26877838a36401"}, {"t": "mist", "a": "Force Of Nature", "p": "https://p.scdn.co/mp3-preview/8d44252a4f0855a04d238b588dded849a0a24ab3", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02eb270132080ef17f74a90d91"}, {"t": "Shiki no Uta (Single)", "a": "MINMI", "p": "https://p.scdn.co/mp3-preview/0d63b2bef692774cf25f3667c5e1e7f6fef7d136", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02393952ac558b6026276b28e3"}, {"t": "the space between two world", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/f69dc2502a7e19e6d7836c5c4cb49f9265579f09", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0259ef99ed996b4e537ed2e6a3"}, {"t": "Lamp", "a": "haruka nakamura, Nujabes", "p": "https://p.scdn.co/mp3-preview/08322e5f74dba461ddeb168e15e2c097118d361e", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02877bde246db91c6cdd5cb40c"}, {"t": "in position", "a": "fat jon", "p": "https://p.scdn.co/mp3-preview/deb12baa61e1973227962daf0324dd470344bc1c", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02878ed741b8e1342d58a332ca"}, {"t": "FLY feat. AZUMA RIKI", "a": "TSUTCHIE, AZUMA RIKI", "p": "https://p.scdn.co/mp3-preview/e359477c1dae6ed7eafc8db2749ae66884ee7cff", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e023fd01ca0c359d7df975089d3"}, {"t": "It's about time -fat jon remix", "a": "Pase Rock, fat jon", "p": "https://p.scdn.co/mp3-preview/a13fda0a14642cb81e0985184349471efde83cc0", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e023092b4bb9f26877838a36401"}, {"t": "Feather", "a": "Nujabes, Cise Starr, Akin", "p": "https://p.scdn.co/mp3-preview/cc08136cc9488729a17827020dcb6355774c502e", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02421d647a4f604d79943f4dad"}, {"t": "Hope Springs Eternal", "a": "Witness", "p": "https://p.scdn.co/mp3-preview/d44f2b2b46272c699c15f138af46e64b9b0dc51f", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e024e47aeb51f9bf9bcf8a20a93"}, {"t": "Blue Avenue", "a": "Jazz Liberatorz", "p": "https://p.scdn.co/mp3-preview/1bd745d4d1463bdcaed34fab1484716287abb302", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02acc67c7ea342815bb3e14e2c"}, {"t": "Echoes", "a": "Yakkle, Julian Yagi", "p": "https://p.scdn.co/mp3-preview/19e8047130f740f91005582abef833c79a9b121d", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02f379e7389468428cb72e746d"}, {"t": "the stroll", "a": "Force Of Nature", "p": "https://p.scdn.co/mp3-preview/bdcb712b4dee426be11bdbbc2a337d510fb1ddda", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02878ed741b8e1342d58a332ca"}, {"t": "Beat laments the world", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/136873228a4f67e32f60de610881f08efce377e6", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0210c73c3476e60630df210053"}, {"t": "Find Away", "a": "Cise Star", "p": "https://p.scdn.co/mp3-preview/8021728b6c545e26f87d227a4ea257334a8e2940", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026696d7a302158ad78a1f416a"}, {"t": "let go", "a": "haruka nakamura, Nujabes", "p": "https://p.scdn.co/mp3-preview/d5591d3078b468082be76d383de69ee2811ffd4b", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02877bde246db91c6cdd5cb40c"}, {"t": "how you feel", "a": "fat jon", "p": "https://p.scdn.co/mp3-preview/0ccf68244ca6922bc6ec1340c417ea63329da873", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0259ef99ed996b4e537ed2e6a3"}, {"t": "sincerely", "a": "TSUTCHIE", "p": "https://p.scdn.co/mp3-preview/c573c7e66131f7a4f6021e6b9022d138bc99d367", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e02eb270132080ef17f74a90d91"}, {"t": "silver morning", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/2110883f4a04506793ace49a4c56268dcdb0c280", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02878ed741b8e1342d58a332ca"}, {"t": "It's About Time (12inch Ver.)", "a": "Pase Rock", "p": "https://p.scdn.co/mp3-preview/1be89ac7cd17584af0b2d1439cf53ac1aae5e021", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02a511be82225080f67b389129"}, {"t": "Mission Statement (feat. Daimyo)", "a": "Witness, Daimyo", "p": "https://p.scdn.co/mp3-preview/ac1a45c0aa7be820c7e43ac210c0f83a63ee5338", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e024e47aeb51f9bf9bcf8a20a93"}, {"t": "Ease My Mind - Feat. Tre Hardson, Fat Lip & Omni", "a": "Jazz Liberatorz", "p": "https://p.scdn.co/mp3-preview/572617e90ae8a3ea72e91dbce9fd8f2c732909d8", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e021daec30c58d42acbcc24a1c5"}, {"t": "Air", "a": "Yakkle", "p": "https://p.scdn.co/mp3-preview/7ad171549a16dd82fc14b076355bc232d140cf4f", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020564502cf807a4bf52d5b9d1"}, {"t": "transcendence", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/bc2ed9cf9e05c60556e52c4e45a1f68cd527d74d", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0259ef99ed996b4e537ed2e6a3"}, {"t": "nightshift", "a": "Force Of Nature", "p": "https://p.scdn.co/mp3-preview/70b03553d46f7789eb1b4a54fd7125fed71572c2", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02878ed741b8e1342d58a332ca"}, {"t": "Geishas In The Days (feat. Pismo)", "a": "Nomak, Pismo", "p": "https://p.scdn.co/mp3-preview/adb0d5139f687eb0d90b6626323da966ae1b0e5d", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e026b9f52158d35cbe4f4d03ef8"}, {"t": "Windmills Intro", "a": "Kero One", "p": "https://p.scdn.co/mp3-preview/1b5202e1d8e18987ceb1f7b9faf593ee1083d066", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0272e46eae5e767775671a5d7c"}, {"t": "san francisco", "a": "MIDICRONICA", "p": "https://p.scdn.co/mp3-preview/89b33e4938ae62e7422e59d58dd7b66fa2e722c9", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0266ee0fe5273c56dcaec90005"}, {"t": "Lady Brown", "a": "Nujabes, Cise Starr", "p": "https://p.scdn.co/mp3-preview/7027dc0d8b25cb4d8808e52e48f7a5fd9de92b0c", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0210c73c3476e60630df210053"}, {"t": "funkin", "a": "fat jon", "p": "https://p.scdn.co/mp3-preview/27094e58cc790b662ab8c836711645b03fd8c00e", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0259ef99ed996b4e537ed2e6a3"}, {"t": "raw material", "a": "TSUTCHIE", "p": "https://p.scdn.co/mp3-preview/1865fe14277f91dd63f104ebb5cae6f6fc38ed83", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02eb270132080ef17f74a90d91"}, {"t": "Sunburn", "a": "Witness", "p": "https://p.scdn.co/mp3-preview/6c203e8e31f6f83800efe11219f83a9a6ef4b060", "img": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021a93610d6284446ea66abff7"}, {"t": "Love Mugen (RIP Nujabes)", "a": "Kyo Itachi", "p": "https://p.scdn.co/mp3-preview/7216f2eaafcb759d5effcc890616966860561e63", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020cd305734ab0bff7fe2d76b0"}, {"t": "dead season", "a": "Nujabes", "p": "https://p.scdn.co/mp3-preview/7b5ff2e707d44c530a1f44f5ff6466cfdb62b0be", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02878ed741b8e1342d58a332ca"}, {"t": "Stronger", "a": "Yakkle", "p": "https://p.scdn.co/mp3-preview/d6364e9c50a50e8959e8b6bbe0d2ac6a73fcb994", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02807bee39303fe0df1d0e3068"}, {"t": "Don't Cry", "a": "J Dilla", "p": "https://p.scdn.co/mp3-preview/2842de000c5be2aed1a01940a924d598b3951f21", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0283bb78285449998bb974da45"}, {"t": "vagrancy", "a": "Force Of Nature", "p": "https://p.scdn.co/mp3-preview/22000f727ac6f7f70817987ceb5976f4ef711664", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02eb270132080ef17f74a90d91"}, {"t": "Anger Of The Earth", "a": "Nomak", "p": "https://p.scdn.co/mp3-preview/a185f372b713db45d4a1eaa4c9e0741f57f21723", "img": "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e026b9f52158d35cbe4f4d03ef8"}];
+  var audio=document.getElementById('bgm');
+  var disc=document.getElementById('disc'), ring=document.getElementById('discRing');
+  var art=document.getElementById('discArt'), npT=document.getElementById('npTitle'), npA=document.getElementById('npArtist');
+  var playBtn=document.getElementById('playBtn'), status=document.getElementById('pStatus');
+  var rack=document.getElementById('cdRack');
+  var ICON_PLAY='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  var ICON_PAUSE='<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>';
+  var cur=-1;
+
+  TRACKS.forEach(function(t,idx){
+    var el=document.createElement('div'); el.className='cd'; el.dataset.idx=idx; el.style.setProperty('--i', idx);
+    el.title=t.t+' · '+t.a;
+    el.innerHTML='<img src="'+t.img+'" alt="" loading="lazy"><span class="lbl">'+t.t+'</span>';
+    el.addEventListener('click',function(){play(idx);});
+    rack.appendChild(el);
+  });
+  document.getElementById('crateCount').textContent=TRACKS.length+' tracks';
+
+  function mark(idx){
+    document.querySelectorAll('.cd.active').forEach(function(e){e.classList.remove('active');});
+    var el=rack.querySelector('.cd[data-idx="'+idx+'"]'); if(el)el.classList.add('active');
+  }
+  function play(idx){
+    var t=TRACKS[idx];
+    if(idx===cur && !audio.paused){ audio.pause(); return; }
+    if(idx!==cur){ cur=idx; audio.src=t.p; art.src=t.img; ring.classList.add('has');
+      npT.textContent=t.t; npA.textContent=t.a; mark(idx);
+      var el=rack.querySelector('.cd[data-idx="'+idx+'"]'); if(el)el.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+    }
+    audio.volume=0; var pr=audio.play();
+    if(pr&&pr.catch)pr.catch(function(){status.textContent='playback blocked, click again';});
+    var v=0,f=setInterval(function(){v=Math.min(.75,v+.06);audio.volume=v;if(v>=.75)clearInterval(f);},50);
+  }
+  audio.addEventListener('play',function(){disc.classList.add('playing');playBtn.innerHTML=ICON_PAUSE;status.innerHTML='▶ now playing · nujabes radio · 30s preview';});
+  audio.addEventListener('pause',function(){disc.classList.remove('playing');playBtn.innerHTML=ICON_PLAY;});
+  audio.addEventListener('ended',function(){play((cur+1)%TRACKS.length);});
+  playBtn.addEventListener('click',function(){ if(cur<0){play(0);return;} if(audio.paused)play(cur); else audio.pause(); });
+  document.getElementById('nextBtn').addEventListener('click',function(){play(((cur<0?0:cur)+1)%TRACKS.length);});
+  document.getElementById('prevBtn').addEventListener('click',function(){play(((cur<0?0:cur)-1+TRACKS.length)%TRACKS.length);});
+  disc.addEventListener('click',function(){ if(cur<0)play(0); else if(audio.paused)play(cur); else audio.pause(); });
+})();
+
+/* ===== Y2K / PS2-era SVG PROJECT LOGOS ===== */
+(function(){
+  var chrome='<stop offset="0" stop-color="#f2f6fa"/><stop offset=".18" stop-color="#ffffff"/><stop offset=".5" stop-color="#b9c6d2"/><stop offset=".82" stop-color="#7a8a99"/><stop offset="1" stop-color="#cfd8e0"/>';
+  var SVG={
+  dermai:'<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs>'+
+    '<linearGradient id="dmC" x1="0" y1="0" x2="0" y2="1">'+chrome+'</linearGradient>'+
+    '<linearGradient id="dmG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ef2ff"/><stop offset="1" stop-color="#009a9a"/></linearGradient>'+
+    '<filter id="dmF" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+
+    '<path d="M60 6 L104 30 V90 L60 114 L16 90 V30 Z" fill="url(#dmC)" stroke="#8fa2b3" stroke-width="1.5"/>'+
+    '<path d="M60 12 L98 33 V87 L60 108 L22 87 V33 Z" fill="#071022"/>'+
+    '<g filter="url(#dmF)"><polygon points="60,34 74,60 60,88 46,60" fill="url(#dmG)"/>'+
+    '<polygon points="60,34 74,60 60,60" fill="#9ffcff" opacity=".75"/><polygon points="60,88 46,60 60,60" fill="#067a7a"/></g>'+
+    '<rect x="44" y="58" width="32" height="3" rx="1.5" fill="#eafcff"><animate attributeName="y" values="38;84;38" dur="2.4s" repeatCount="indefinite"/></rect>'+
+    '<g stroke="#7fffd4" stroke-width="1" fill="#7fffd4" filter="url(#dmF)"><line x1="52" y1="74" x2="60" y2="80"/><line x1="60" y1="80" x2="68" y2="74"/>'+
+    '<circle cx="52" cy="74" r="2.4"/><circle cx="68" cy="74" r="2.4"/><circle cx="60" cy="80" r="2.4"/></g></svg>',
+
+  optimizer:'<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs>'+
+    '<linearGradient id="opC" x1="0" y1="0" x2="0" y2="1">'+chrome+'</linearGradient>'+
+    '<linearGradient id="opL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3aaeff"/><stop offset="1" stop-color="#ff5cf0"/></linearGradient>'+
+    '<radialGradient id="opB" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#cfd8e0"/><stop offset="1" stop-color="#5b6b7d"/></radialGradient>'+
+    '<filter id="opF" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+
+    '<path d="M60 6 L104 30 V90 L60 114 L16 90 V30 Z" fill="url(#opC)" stroke="#8fa2b3" stroke-width="1.5"/>'+
+    '<path d="M60 12 L98 33 V87 L60 108 L22 87 V33 Z" fill="#071022"/>'+
+    '<g stroke="#3fd0ff" fill="none" opacity=".4"><ellipse cx="76" cy="86" rx="24" ry="8"/><ellipse cx="76" cy="86" rx="16" ry="5"/><ellipse cx="76" cy="86" rx="8" ry="3"/></g>'+
+    '<path d="M26 36 C42 42 44 74 76 86" stroke="url(#opL)" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#opF)"/>'+
+    '<g fill="#8fd7ff"><circle cx="40" cy="46" r="2" opacity=".3"/><circle cx="50" cy="56" r="2" opacity=".45"/><circle cx="61" cy="68" r="2.4" opacity=".6"/></g>'+
+    '<circle cx="76" cy="86" r="8" fill="url(#opB)" filter="url(#opF)"/></svg>',
+
+  kortly:'<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs>'+
+    '<linearGradient id="ktC" x1="0" y1="0" x2="0" y2="1">'+chrome+'</linearGradient>'+
+    '<radialGradient id="ktP" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#b6ffcf"/><stop offset=".5" stop-color="#2fd08a"/><stop offset="1" stop-color="#0a7d55"/></radialGradient>'+
+    '<filter id="ktF" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+
+    '<path d="M60 8 L100 30 V86 L60 108 L20 86 V30 Z" fill="url(#ktC)" stroke="#8090a0" stroke-width="1.5"/>'+
+    '<path d="M60 8 L100 30 V57 L20 57 V30 Z" fill="#ffffff" opacity=".14"/>'+
+    '<polygon points="40,84 80,84 92,58 28,58" fill="#0a2b4d" stroke="#39b6ff" stroke-width="1.6"/>'+
+    '<line x1="60" y1="58" x2="60" y2="84" stroke="#39b6ff" stroke-width="1.4"/>'+
+    '<line x1="33" y1="71" x2="87" y2="71" stroke="#39b6ff" stroke-width="1" opacity=".7"/>'+
+    '<g filter="url(#ktF)"><path d="M60 24 C68 24 72 31 68 39 L60 52 L52 39 C48 31 52 24 60 24 Z" fill="url(#ktP)" stroke="#0a7d55" stroke-width=".5"/>'+
+    '<circle cx="60" cy="34" r="3.2" fill="#eafff5"/></g></svg>',
+
+  airline:'<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs>'+
+    '<linearGradient id="alC" x1="0" y1="0" x2="0" y2="1">'+chrome+'</linearGradient>'+
+    '<filter id="alF" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+
+    '<path d="M60 6 L104 30 V90 L60 114 L16 90 V30 Z" fill="url(#alC)" stroke="#8fa2b3" stroke-width="1.5"/>'+
+    '<path d="M60 12 L98 33 V87 L60 108 L22 87 V33 Z" fill="#071022"/>'+
+    '<g stroke="#39b6ff" fill="none" opacity=".85"><circle cx="52" cy="66" r="24"/><ellipse cx="52" cy="66" rx="24" ry="9"/><ellipse cx="52" cy="66" rx="11" ry="24"/><ellipse cx="52" cy="66" rx="19" ry="24" opacity=".5"/><line x1="28" y1="66" x2="76" y2="66"/></g>'+
+    '<path d="M28 92 Q66 44 96 30" stroke="#9bff5b" stroke-width="2" fill="none" stroke-dasharray="4 4" stroke-linecap="round" filter="url(#alF)"><animate attributeName="stroke-dashoffset" values="16;0" dur="1s" repeatCount="indefinite"/></path>'+
+    '<g filter="url(#alF)"><polygon points="84,46 102,26 97,48 88,52" fill="url(#alC)" stroke="#8fa2b3" stroke-width=".6"/>'+
+    '<polygon points="97,48 102,26 91,45" fill="#eef4fa"/></g></svg>'
+  };
+  document.querySelectorAll('.glyph[data-proj]').forEach(function(el){
+    var k=el.dataset.proj; if(SVG[k]) el.innerHTML=SVG[k];
+  });
+})();
+
+/* ===== PS2 MEMORY CARD skill loader ===== */
+(function(){
+  var card=document.getElementById('mcard'), body=document.getElementById('mcsBody');
+  if(!card||!body) return;
+  var S=[
+    {n:'Python', c:'Language', b:'ML, data pipelines, the glue for everything.', lvl:92},
+    {n:'TensorFlow / Keras', c:'Deep Learning', b:'Trained DermAI to 98%+ val accuracy.', lvl:88},
+    {n:'NumPy', c:'Math Engine', b:'Optimizers from scratch: GD, SGD, Adam.', lvl:86},
+    {n:'Next.js 14', c:'Full-Stack', b:'Shipped Kortly to production.', lvl:85},
+    {n:'PostgreSQL + Prisma', c:'Database', b:'Schemas, migrations, real data.', lvl:80},
+    {n:'Supabase', c:'Backend', b:'Auth, storage, realtime, done fast.', lvl:78},
+    {n:'Java', c:'Language', b:'OOP engines & clean architecture.', lvl:82},
+    {n:'C', c:'Language', b:'Systems & low-level, close to the metal.', lvl:80},
+    {n:'Git + Linux', c:'Toolchain', b:'Terminal-native, daily driver.', lvl:88},
+    {n:'Leadership', c:'Soft Skill', b:'Ran a 200+ attendee tech conference.', lvl:90}
+  ];
+  var i=-1;
+  function load(){
+    i=(i+1)%S.length; var s=S[i];
+    body.classList.remove('mcs-flick'); void body.offsetWidth; body.classList.add('mcs-flick');
+    body.innerHTML='<div class="mcs-cat">loading save…</div>';
+    setTimeout(function(){
+      body.innerHTML='<div class="mcs-cat">'+s.c+' · save '+(i+1)+'/'+S.length+'</div>'+
+        '<div class="mcs-name">'+s.n+'</div><div class="mcs-blurb">'+s.b+'</div>'+
+        '<div class="mcs-bar"><b></b></div>';
+      var bar=body.querySelector('.mcs-bar b');
+      requestAnimationFrame(function(){ bar.style.width=s.lvl+'%'; });
+    },380);
+  }
+  card.addEventListener('click',load);
+  card.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();load();} });
+})();
+</script>
+</body>
+</html>
