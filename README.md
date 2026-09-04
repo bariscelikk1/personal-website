@@ -1,26 +1,32 @@
-# BARIŞ ÇELIK — y2k / ps2 personal site
+# Personal Website
 
-A Y2K / PS2 / 2000s-Japan aesthetic personal site. Single self-contained `index.html`
-(vanilla HTML / CSS / JS, no build step, no frameworks).
+The personal website and portfolio of N. Barış Çelik, Computer Engineering student
+at Yıldız Teknik Üniversitesi.
 
-## Features
-- PS2-style boot loader
-- Chrome + holographic display type
-- A big spinning "disc" music player wired to a Nujabes Radio set (Spotify 30s previews),
-  with a scrollable cover catalog
-- Chrome-hex SVG project logos
-- A PS2 memory-card skill loader
-- Sparkle cursor, scroll reveals, count-up stats
+Built as a single self-contained `index.html` with vanilla HTML, CSS and JavaScript.
+No frameworks, no build step, no dependencies.
+
+## Sections
+- Introduction and profile
+- Project showcase with custom SVG iconography
+- Experience and community involvement
+- An interactive music player
+- Contact links
 
 ## Run locally
-Just open `index.html` in a browser, or serve the folder:
+Open `index.html` in a browser, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Fonts load from Google Fonts and the music covers/previews from Spotify's CDN,
-so those parts need an internet connection; everything else works offline.
+Fonts are loaded from Google Fonts and some media from external CDNs, so those parts
+require an internet connection; the rest works offline.
 
 ## Stack
-Plain HTML, CSS and JavaScript. No dependencies.
+Plain HTML, CSS and JavaScript.
+
+## Contact
+- Email: nbariscelikk@gmail.com
+- LinkedIn: https://www.linkedin.com/in/barış-çelik-12979a252/
+- GitHub: https://github.com/bariscelikk1
