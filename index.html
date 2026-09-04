@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Chakra+Petch:wght@400;600;700&family=Nabla&family=Orbitron:wght@500;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   ◈ BARIŞ ÇELIK ◈  Y2K / PS2 / 2000s-Japan personal site
+   Personal website of N. Barış Çelik
    ============================================================ */
 :root{
   --chrome:#DBE2E9; --steel:#9FB4C7; --ice:#A6E1FA; --frost:#7DF9FF; --lav:#E6E6FA; --ghost:#F8F8FF;
@@ -42,7 +42,7 @@ body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:99
 body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:9997;
   background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);}
 
-/* ================= PS2 BOOT ================= */
+/* ================= BOOT ================= */
 #boot{position:fixed; inset:0; z-index:10000; background:
     radial-gradient(ellipse at 50% 46%, #12224e 0%, #060b1c 60%, #010208 100%);
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px;
@@ -234,7 +234,7 @@ section{padding:clamp(3rem,6.5vw,5rem) clamp(18px,5vw,40px); position:relative}
 .xp-ico{width:58px}.xp-ico svg{width:100%;height:auto;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
 @media(max-width:640px){.xp-row{grid-template-columns:46px 1fr; gap:10px 14px}.xp-row .xp-when{grid-column:2}}
 
-/* PS2 MEMORY CARD skill loader */
+/* MEMORY CARD skill loader */
 .mcard-zone{display:flex; gap:26px; align-items:stretch; flex-wrap:wrap; margin-top:22px;
   border:1px solid var(--panelborder); border-radius:16px; padding:24px; background:var(--panelbg)}
 .mcard-side{display:flex; flex-direction:column; align-items:center; gap:10px}
@@ -517,7 +517,7 @@ footer{padding:40px 20px 70px; text-align:center; border-top:1px solid var(--pan
 </footer>
 
 <script>
-/* ===== PS2 BOOT ===== */
+/* ===== BOOT ===== */
 (function(){
   var towers=document.getElementById('towers');
   for(var i=0;i<14;i++){var t=document.createElement('i');
@@ -662,7 +662,7 @@ footer{padding:40px 20px 70px; text-align:center; border-top:1px solid var(--pan
   disc.addEventListener('click',function(){ if(cur<0)play(0); else if(audio.paused)play(cur); else audio.pause(); });
 })();
 
-/* ===== Y2K / PS2-era SVG PROJECT LOGOS ===== */
+/* ===== SVG PROJECT LOGOS ===== */
 (function(){
   var chrome='<stop offset="0" stop-color="#f2f6fa"/><stop offset=".18" stop-color="#ffffff"/><stop offset=".5" stop-color="#b9c6d2"/><stop offset=".82" stop-color="#7a8a99"/><stop offset="1" stop-color="#cfd8e0"/>';
   var SVG={
@@ -717,7 +717,7 @@ footer{padding:40px 20px 70px; text-align:center; border-top:1px solid var(--pan
   });
 })();
 
-/* ===== PS2 MEMORY CARD skill loader ===== */
+/* ===== MEMORY CARD skill loader ===== */
 (function(){
   var card=document.getElementById('mcard'), body=document.getElementById('mcsBody');
   if(!card||!body) return;
