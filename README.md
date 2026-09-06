@@ -9,11 +9,11 @@ Y2K / frutiger-aero aesthetic — boot sequence, chrome-gradient display type, a
 CD-rack music player, animated stats, and a PS2-style memory-card skill loader —
 built as a Next.js app so the site can keep growing past a single HTML file.
 
-This branch (`nextjs`) is a from-scratch port of the original static
-`index.html` (kept in this repo for reference) into Next.js, TypeScript,
-Tailwind CSS and a few shadcn/ui primitives for accessible structure (mobile
-nav). The visual identity — every color, animation and piece of copy — is
-carried over unchanged.
+Originally a single hand-written `index.html`, now a port of that page into
+Next.js, TypeScript, Tailwind CSS and a few shadcn/ui primitives for accessible
+structure (mobile nav). The visual identity — every color, animation and piece
+of copy — is carried over unchanged. The original `index.html` is kept in the
+repo for reference.
 
 ## Sections
 - Introduction and profile, with a rotating role line
