@@ -334,9 +334,10 @@ section{padding:clamp(3rem,6.5vw,5rem) clamp(18px,5vw,40px); position:relative}
 }
 
 /* ================= PROJECT CARDS =================
-   Not four identical tiles: the first project runs full-width as a feature,
-   and the rest carry a faint fixed tilt so the grid doesn't read as a
-   generated component grid. */
+   Not four identical tiles. The first and last projects run full-width as
+   horizontal feature rows (mirrored, so they don't read as copies of each
+   other) and the middle two sit sandwiched between them in two columns with
+   a faint fixed tilt. */
 .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px}
 @media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
 /* Tilt and hover-lift use the independent `rotate`/`translate` properties, not
@@ -346,14 +347,19 @@ section{padding:clamp(3rem,6.5vw,5rem) clamp(18px,5vw,40px); position:relative}
   background:var(--panelbg); display:block; color:inherit; rotate:var(--tilt); translate:0 0;
   transition:translate .35s, rotate .35s, border-color .35s, box-shadow .35s}
 .card:hover{translate:0 -6px; border-color:var(--pink); box-shadow:0 24px 60px rgba(243,104,224,.22)}
-.card:nth-child(1){grid-column:1/-1}
+.card:nth-child(1),
+.card:nth-child(4){grid-column:1/-1}
 .card:nth-child(2){--tilt:-0.55deg}
 .card:nth-child(3){--tilt:0.5deg}
-.card:nth-child(4){--tilt:-0.4deg}
 @media(min-width:760px){
-  .card:nth-child(1){display:flex; align-items:stretch}
-  .card:nth-child(1) .card-media{flex:0 0 42%; aspect-ratio:auto}
-  .card:nth-child(1) .card-body{flex:1; display:flex; flex-direction:column; justify-content:center}
+  .card:nth-child(1),
+  .card:nth-child(4){display:flex; align-items:stretch}
+  /* the closing feature row mirrors the opening one */
+  .card:nth-child(4){flex-direction:row-reverse}
+  .card:nth-child(1) .card-media,
+  .card:nth-child(4) .card-media{flex:0 0 42%; aspect-ratio:auto}
+  .card:nth-child(1) .card-body,
+  .card:nth-child(4) .card-body{flex:1; display:flex; flex-direction:column; justify-content:center}
 }
 .card-media{aspect-ratio:16/10; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
   background:radial-gradient(circle at 30% 20%, #1c2f60, #0a1230 70%)}
