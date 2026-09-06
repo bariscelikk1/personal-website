@@ -316,20 +316,45 @@ section{padding:clamp(3rem,6.5vw,5rem) clamp(18px,5vw,40px); position:relative}
 .cd.active img{outline:2px solid var(--frost); outline-offset:1px; box-shadow:0 0 16px rgba(125,249,255,.6)}
 .cd.active::after{content:"\25B6"; position:absolute; top:5px; right:5px; font-size:.55rem; color:#fff; text-shadow:0 0 6px var(--frost)}
 
-/* ================= STATS ================= */
-.stats{display:grid; grid-template-columns:repeat(5,1fr); gap:18px}
-@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{border:1px solid var(--panelborder); border-radius:14px; padding:22px 16px; text-align:center;
-  background:var(--panelbg); box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+/* ================= STATS =================
+   Deliberately not a grid of identical boxes: an editorial row, left-aligned,
+   separated by hairlines, with a little vertical rhythm between entries. */
+.stats{display:flex; flex-wrap:wrap; align-items:flex-end; gap:0 clamp(20px,4vw,40px)}
+.stat{flex:1 1 150px; text-align:left; padding-right:clamp(20px,4vw,40px);
+  border-right:1px solid var(--panelborder)}
+.stat:last-child{border-right:none; padding-right:0}
+.stat:nth-child(2n){transform:translateY(16px)}
+.stat:nth-child(3n){transform:translateY(-8px)}
 .stat b{display:block; font-family:var(--disp); font-size:clamp(2rem,5vw,3.2rem); line-height:1; letter-spacing:.02em}
-.stat small{display:block; margin-top:8px; font-family:var(--tech); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:#9fb4c7}
+.stat small{display:block; margin-top:10px; font-family:var(--tech); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:#9fb4c7}
+@media(max-width:760px){
+  .stats{flex-direction:column; align-items:stretch; gap:18px 0}
+  .stat{border-right:none; border-bottom:1px solid var(--panelborder); padding:0 0 16px; transform:none !important}
+  .stat:last-child{border-bottom:none; padding-bottom:0}
+}
 
-/* ================= PROJECT CARDS ================= */
+/* ================= PROJECT CARDS =================
+   Not four identical tiles: the first project runs full-width as a feature,
+   and the rest carry a faint fixed tilt so the grid doesn't read as a
+   generated component grid. */
 .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px}
 @media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
-.card{position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--panelborder);
-  background:var(--panelbg); transition:.35s; display:block; color:inherit}
-.card:hover{transform:translateY(-6px); border-color:var(--pink); box-shadow:0 24px 60px rgba(243,104,224,.22)}
+/* Tilt and hover-lift use the independent `rotate`/`translate` properties, not
+   `transform` — `.reveal.in` owns `transform` for the entrance animation and
+   would otherwise cancel both. */
+.card{--tilt:0deg; position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--panelborder);
+  background:var(--panelbg); display:block; color:inherit; rotate:var(--tilt); translate:0 0;
+  transition:translate .35s, rotate .35s, border-color .35s, box-shadow .35s}
+.card:hover{translate:0 -6px; border-color:var(--pink); box-shadow:0 24px 60px rgba(243,104,224,.22)}
+.card:nth-child(1){grid-column:1/-1}
+.card:nth-child(2){--tilt:-0.55deg}
+.card:nth-child(3){--tilt:0.5deg}
+.card:nth-child(4){--tilt:-0.4deg}
+@media(min-width:760px){
+  .card:nth-child(1){display:flex; align-items:stretch}
+  .card:nth-child(1) .card-media{flex:0 0 42%; aspect-ratio:auto}
+  .card:nth-child(1) .card-body{flex:1; display:flex; flex-direction:column; justify-content:center}
+}
 .card-media{aspect-ratio:16/10; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
   background:radial-gradient(circle at 30% 20%, #1c2f60, #0a1230 70%)}
 .card-media .glyph{font-size:clamp(3rem,9vw,5.5rem); transition:transform .5s ease; filter:drop-shadow(0 6px 16px rgba(0,0,0,.5))}
@@ -348,13 +373,22 @@ section{padding:clamp(3rem,6.5vw,5rem) clamp(18px,5vw,40px); position:relative}
 .stack{display:flex; flex-wrap:wrap; gap:7px}
 .chip{font-family:var(--term); font-size:1rem; line-height:1; padding:5px 10px; border-radius:6px; color:#cfe6ff; border:1px solid rgba(166,225,250,.3); background:rgba(0,20,45,.4)}
 
-/* ================= EXPERIENCE ================= */
-.xp{display:grid; gap:18px}
-.xp-row{display:grid; grid-template-columns:58px 140px 1fr; gap:22px; padding:22px; align-items:start;
-  border:1px solid var(--panelborder); border-radius:14px; background:var(--panelbg); transition:.3s}
-.xp-row:hover{border-color:rgba(255,159,243,.5); box-shadow:0 12px 30px rgba(243,104,224,.12)}
-.xp-ico{width:58px}.xp-ico svg{width:100%;height:auto;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
-@media(max-width:640px){.xp-row{grid-template-columns:46px 1fr; gap:10px 14px}.xp-row .xp-when{grid-column:2}}
+/* ================= EXPERIENCE =================
+   A real timeline instead of three stacked identical cards: a connecting
+   line runs behind the icons, rows have no box of their own, just a soft
+   hover wash. */
+.xp{display:grid; gap:0}
+.xp-row{position:relative; display:grid; grid-template-columns:58px 140px 1fr; gap:22px; padding:20px 6px;
+  align-items:start; border:none; border-radius:10px; background:none; transition:background .3s}
+.xp-row:hover{background:rgba(255,159,243,.06)}
+.xp-row:not(:last-child)::after{content:""; position:absolute; left:28px; top:78px; bottom:-20px; width:1px; background:var(--panelborder)}
+.xp-ico{width:58px; position:relative; z-index:1}
+.xp-ico svg{width:100%;height:auto;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+@media(max-width:640px){
+  .xp-row{grid-template-columns:46px 1fr; gap:10px 14px}
+  .xp-row .xp-when{grid-column:2}
+  .xp-row:not(:last-child)::after{left:22px}
+}
 
 /* MEMORY CARD skill loader */
 .mcard-zone{display:flex; gap:26px; align-items:stretch; flex-wrap:wrap; margin-top:22px;
