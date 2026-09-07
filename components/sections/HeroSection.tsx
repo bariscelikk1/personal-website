@@ -1,6 +1,7 @@
 import { RoleRotator } from "@/components/RoleRotator";
 import { AquaLink } from "@/components/AquaLink";
 import { MusicPlayer } from "@/components/player/MusicPlayer";
+import { SysInfo } from "@/components/SysInfo";
 
 export function HeroSection() {
   return (
@@ -19,12 +20,12 @@ export function HeroSection() {
             &gt; <RoleRotator />
             <span style={{ color: "var(--pink)" }}>_</span>
           </div>
-          <div className="hero-loc">📍 Istanbul, Turkey · Yıldız Teknik Üniversitesi</div>
           <p className="hero-blurb">
             Computer engineer who trains neural nets that beat clinical baselines, ships full-stack platforms,
             and builds developer communities 200+ strong. I write optimizers from scratch for fun and full-stack
-            apps for real.
+            apps for real — and I&apos;m looking for a software engineering internship.
           </p>
+          <SysInfo />
           <div className="hero-cta">
             <AquaLink href="#work">◈ View my work</AquaLink>
             <AquaLink variant="pink" href="mailto:nbariscelikk@gmail.com">

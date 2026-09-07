@@ -155,6 +155,8 @@ body{
   overflow-x:hidden; cursor:crosshair;
 }
 a{color:var(--frost);text-decoration:none}
+:focus-visible{outline:2px solid var(--frost); outline-offset:3px; border-radius:2px}
+.pbtn:focus-visible,.mcard:focus-visible,.cd:focus-visible{outline-offset:2px}
 img{max-width:100%}
 
 body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:9998;
@@ -201,6 +203,9 @@ nav.scrolled{background:rgba(6,10,26,.94);
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px; background:linear-gradient(90deg,var(--pink),var(--frost));transition:.3s}
 .navlinks a:hover::after,.navlinks a.active::after{width:100%}
 .navlinks a:hover{color:#fff}
+.nav-contact{font-size:1rem !important; color:var(--frost) !important}
+.nav-contact::after{display:none}
+.nav-contact:hover{color:#fff !important; text-shadow:0 0 10px var(--frost)}
 @media(max-width:640px){.navlinks{gap:12px;font-size:.6rem}.brand{font-size:.85rem}}
 .nav-burger{display:none !important; background:none !important; border:none !important}
 @media(max-width:640px){
@@ -253,12 +258,21 @@ section{padding:clamp(3rem,6.5vw,5rem) clamp(18px,5vw,40px); position:relative}
 .hero-name .l2{display:block}
 .hero-role{font-family:var(--tech); font-weight:700; font-size:clamp(1rem,3vw,1.5rem); letter-spacing:.06em; min-height:1.6em}
 .roleword{color:#fff}
-.hero-loc{font-family:var(--term); font-size:1.5rem; color:var(--frost); letter-spacing:.06em; margin-top:.4rem}
 .hero-blurb{max-width:52ch; color:#c3d3ea; margin:1.4rem 0 1.9rem}
 .hero-cta{display:flex; gap:14px; flex-wrap:wrap}
 .online{display:inline-flex;align-items:center;gap:8px;font-family:var(--tech);font-size:.7rem;
   letter-spacing:.2em;text-transform:uppercase;color:#9fffb0;margin-bottom:14px}
 .dot{width:9px;height:9px;border-radius:50%;background:#39ff88;box-shadow:0 0 10px #39ff88;animation:blink 1.1s steps(1) infinite}
+
+/* A skimmable terminal readout — the recruiter's 10-second scan path,
+   styled as a system status panel rather than a bolted-on info card. */
+.sysinfo{font-family:var(--term); font-size:1.05rem; line-height:1.5; border-left:2px solid var(--panelborder);
+  padding-left:14px; margin:1.6rem 0; max-width:38ch}
+.sysinfo-head{color:#39ff88; letter-spacing:.04em; margin-bottom:2px}
+.sysinfo-row{display:flex; gap:.6em}
+.sysinfo-k{color:#7fb0c9; min-width:5.4em; flex:0 0 auto}
+.sysinfo-k::after{content:":"}
+.sysinfo-v{color:#cfe6ff}
 @keyframes blink{50%{opacity:.25}}
 
 /* ================= MUSIC PLAYER ================= */

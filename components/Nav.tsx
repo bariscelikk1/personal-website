@@ -40,6 +40,9 @@ export function Nav() {
             {l.label}
           </a>
         ))}
+        <a href="mailto:nbariscelikk@gmail.com" className="nav-contact" aria-label="Email me">
+          ✉
+        </a>
       </div>
       <Sheet open={open} onOpenChange={setOpen}>
         <Button
@@ -64,6 +67,9 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
+            <a href="mailto:nbariscelikk@gmail.com" onClick={() => setOpen(false)}>
+              ✉ Email me
+            </a>
           </div>
         </SheetContent>
       </Sheet>

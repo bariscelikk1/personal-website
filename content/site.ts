@@ -55,7 +55,7 @@ export const projects: Project[] = [
     description:
       "A 7-class dermoscopic skin-lesion classifier on HAM10000 (10,015 images) hitting 98%+ validation accuracy, with melanoma recall as the primary target. Two-stage LP→FT transfer pipeline, custom Keras callbacks, and a 58:1 class-imbalance solved with strategic oversampling.",
     stack: ["TensorFlow/Keras", "EfficientNetB0", "Transfer Learning", "Kaggle"],
-    href: "https://github.com/bariscelikk1",
+    href: "https://github.com/bariscelikk1/dermai",
   },
   {
     slug: "optimizer",
